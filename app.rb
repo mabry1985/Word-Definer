@@ -14,8 +14,7 @@ post ('/') do
   definition = params[:definition]
   new_word = Word.new({:word => word})
   new_word.save()
-  new_word.definition.push(definition)
-  binding.pry
+  new_word.definitions.push(definition)
   redirect('/')
 end
 
@@ -32,8 +31,8 @@ post ('/new_board') do
 end
 
 get ('/words/:id') do
-  @word = Word.all
-  @word_lookup = Word.find(params[:id].to_i)
+  @words = Word.all
+  @word = Word.find(params[:id].to_i)
   erb(:word)
 end
 # get ('/boards/:id') do

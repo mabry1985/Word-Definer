@@ -1,0 +1,13 @@
+<h4><%= @word.word %></h4>
+
+<ul>
+  <% if @word.definitions.length > 0 %>
+    <% @word.definitions.each do |definition| %>
+      <li><%= definition %></li>
+    <% end %>
+<% else %>
+  <p>There are no defintions listed for this word yet.</p>
+<% end %>
+</ul>
+
+<a href="/">Click here to go to word list</a>

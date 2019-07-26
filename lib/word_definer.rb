@@ -1,5 +1,5 @@
 class Word
-  attr_accessor :word, :definition
+  attr_accessor :word, :definitions
   attr_reader :id
 
   @@words = {}
@@ -7,7 +7,7 @@ class Word
 
   def initialize(attributes)
     @word = attributes.fetch(:word)
-    @definition = []
+    @definitions = []
     @id = id || @@total_rows += 1
   end
 

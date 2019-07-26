@@ -5,10 +5,10 @@ set(:show_exceptions, false)
 
 describe('create a word path', {:type => :feature}) do
   it('creates an word and then goes to the home page') do
-    visit('/index')
+    visit('/')
     # save_and_open_page
     click_on('Add a new word!')
-    fill_in('Word', :with => 'Submarine')
+    fill_in('word', :with => 'Submarine')
     click_on('Add word')
     expect(page).to have_content('Submarine')
   end
