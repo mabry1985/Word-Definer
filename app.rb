@@ -34,3 +34,9 @@ post ('/words/:id') do
   @word.definitions.push(params[:definition])
   erb (:word)
 end
+
+delete ('/words/:id') do
+  binding.pry
+  @word.definitions.delete_at(id)
+  erb (:word)
+end
