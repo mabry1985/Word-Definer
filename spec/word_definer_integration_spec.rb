@@ -14,7 +14,7 @@ describe('create a word path', {:type => :feature}) do
   end
 end
 
-describe('create a word page and view definition', {:type => :feature}) do
+describe('create a word path and view definition', {:type => :feature}) do
   it('creates an word and definition and then goes to the word page') do
     visit("/")
     click_on('Add a new word!')
@@ -23,5 +23,16 @@ describe('create a word page and view definition', {:type => :feature}) do
     click_on('Add word')
     click_on('Ranch')
     expect(page).to have_content('seasoned mayo')
+  end
+end
+
+describe('add new definition', {:type => :feature}) do
+  it('adds a new definition') do
+    word = Word.new({:word => 'Artist'})
+    word.save()
+    visit("/words/1")
+    fill_in('definition', :with => 'someone who creates art')
+    click_on("Add definition")
+    expect(page).to have_content('someone who creates art')
   end
 end

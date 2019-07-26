@@ -22,14 +22,6 @@ get ('/words/new') do
   erb(:new_word)
 end
 
-
-post ('/new_board') do
-  title = params[:title]
-  board = Board.new({:title => title})
-  board.save()
-  redirect to ('/')
-end
-
 get ('/words/:id') do
   @words = Word.all
   @word = Word.find(params[:id].to_i)
@@ -42,6 +34,7 @@ post ('/words/:id') do
   @word.definitions.push(params[:definition])
   erb (:word)
 end
+
 # get ('/boards/:id') do
 #   @messages = Message.all
 #   @board = Board.find(params[:id].to_i)
