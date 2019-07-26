@@ -23,13 +23,19 @@ get ('/words/new') do
   erb(:new_word)
 end
 
-# post ('/new_board') do
-#   title = params[:title]
-#   board = Board.new({:title => title})
-#   board.save()
-#   redirect to ('/')
-# end
-#
+
+post ('/new_board') do
+  title = params[:title]
+  board = Board.new({:title => title})
+  board.save()
+  redirect to ('/')
+end
+
+get ('/words/:id') do
+  @word = Word.all
+  @word_lookup = Word.find(params[:id].to_i)
+  erb(:word)
+end
 # get ('/boards/:id') do
 #   @messages = Message.all
 #   @board = Board.find(params[:id].to_i)

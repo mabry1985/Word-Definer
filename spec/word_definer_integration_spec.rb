@@ -3,16 +3,16 @@ require('./app')
 Capybara.app = Sinatra::Application
 set(:show_exceptions, false)
 
-# describe('create an album path', {:type => :feature}) do
-#   it('creates an album and then goes to the album page') do
-#     visit('/albums')
-#     # save_and_open_page
-#     click_on('Add a New Album')
-#     fill_in('album_name', :with => 'Yellow Submarine')
-#     click_on('Add album')
-#     expect(page).to have_content('Yellow Submarine')
-#   end
-# end
+describe('create a word path', {:type => :feature}) do
+  it('creates an word and then goes to the home page') do
+    visit('/index')
+    # save_and_open_page
+    click_on('Add a new word!')
+    fill_in('Word', :with => 'Submarine')
+    click_on('Add word')
+    expect(page).to have_content('Submarine')
+  end
+end
 #
 # describe('create a song path', {:type => :feature}) do
 #   it('creates an album and then goes to the album page') do
