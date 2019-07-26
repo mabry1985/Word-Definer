@@ -15,7 +15,8 @@ class Word
   end
 
   def delete_definition(definition)
-    definitions - [definition]
+    binding.pry
+    new_arr = definitions - [definition]
   end
 
   def self.all()
