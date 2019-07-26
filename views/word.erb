@@ -10,4 +10,14 @@
 <% end %>
 </ul>
 
+<form action="/words/<%= @word.id %>" method="post">
+  <div class="form-group">
+    <label for="definition">Add a definition</label>
+    <textarea name="definition" class="form-control" type="text" rows="5" cols="60">
+    </textarea>
+  </div>
+  <button type="submit" class="btn">Add definition</button>
+</form>
+
+
 <a href="/">Click here to go to word list</a>

@@ -35,6 +35,13 @@ get ('/words/:id') do
   @word = Word.find(params[:id].to_i)
   erb(:word)
 end
+
+post ('/words/:id') do
+  @words = Word.all
+  @word = Word.find(params[:id].to_i)
+  @word.definitions.push(params[:definition])
+  erb (:word)
+end
 # get ('/boards/:id') do
 #   @messages = Message.all
 #   @board = Board.find(params[:id].to_i)
