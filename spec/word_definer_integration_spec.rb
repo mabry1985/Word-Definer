@@ -13,14 +13,15 @@ describe('create a word path', {:type => :feature}) do
     expect(page).to have_content('Submarine')
   end
 end
-#
-# describe('create a song path', {:type => :feature}) do
-#   it('creates an album and then goes to the album page') do
-#     album = Album.new("Yellow Submarine", nil, "The Beetles", "Rock")
-#     album.save
-#     visit("/albums/#{album.id}")
-#     fill_in('song_name', :with => 'All You Need Is Love')
-#     click_on('Add song')
-#     expect(page).to have_content('All You Need Is Love')
-#   end
-# end
+
+describe('create a word page and view definition', {:type => :feature}) do
+  it('creates an word and definition and then goes to the word page') do
+    visit("/")
+    click_on('Add a new word!')
+    fill_in('word', :with => 'Ranch')
+    fill_in('definition', :with => 'seasoned mayo')
+    click_on('Add word')
+    click_on('Ranch')
+    expect(page).to have_content('seasoned mayo')
+  end
+end
