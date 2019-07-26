@@ -3,10 +3,14 @@ require('./app')
 Capybara.app = Sinatra::Application
 set(:show_exceptions, false)
 
+
+before(:each) do
+  Word.clear()
+end
+
 describe('create a word path', {:type => :feature}) do
   it('creates an word and then goes to the home page') do
     visit('/')
-    # save_and_open_page
     click_on('Add a new word!')
     fill_in('word', :with => 'Submarine')
     click_on('Add word')
@@ -28,11 +32,14 @@ end
 
 describe('add new definition', {:type => :feature}) do
   it('adds a new definition') do
-    word = Word.new({:word => 'Artist'})
-    word.save()
-    visit("/words/1")
+    visit("/")
+    click_on('Add a new word!')
+    fill_in('word', :with => 'Artist')
+    click_on('Add word')
+    click_on('Artist')
     fill_in('definition', :with => 'someone who creates art')
     click_on("Add definition")
     expect(page).to have_content('someone who creates art')
+    Word.clear
   end
 end

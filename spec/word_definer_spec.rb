@@ -12,7 +12,15 @@ describe('#word_definer') do
     end
   end
 
-  describe()
+  describe('#definition') do
+    banana = Word.new({:word => 'Banana'})
+    banana.save()
+    banana.definitions = ['a fruit', 'dangerous weapon']
+    banana.delete_definition('a dangerous weapon')
+    it ('returns the array without the string passed') do
+      expect(banana.definitions).to(eq(['a fruit']))
+    end
+  end
 
 
 end

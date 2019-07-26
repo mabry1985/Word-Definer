@@ -35,6 +35,7 @@ post ('/words/:id') do
   erb (:word)
 end
 
+
 # get ('/boards/:id') do
 #   @messages = Message.all
 #   @board = Board.find(params[:id].to_i)

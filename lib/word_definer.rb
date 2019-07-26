@@ -1,6 +1,5 @@
 class Word
-  attr_accessor :word, :definitions
-  attr_reader :id
+  attr_accessor :word, :definitions, :id
 
   @@words = {}
   @@total_rows = 0
@@ -13,6 +12,10 @@ class Word
 
   def save
     @@words[self.id] = self
+  end
+
+  def delete_definition(definition)
+    definitions - [definition]
   end
 
   def self.all()
