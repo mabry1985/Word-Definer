@@ -1,4 +1,4 @@
-require('./lib/word')
+require('./lib/definition')
 
 class Word
   attr_accessor :word, :definitions, :id
@@ -11,16 +11,6 @@ class Word
     @definitions = []
     @id = id || @@total_rows += 1
   end
-
-  # def self.find_by_word(word_id)
-  # definitions = []
-  # @@definitions.values.each do |definition|
-  #   if definition.word_id == word_id
-  #     definitions.push(definition)
-  #   end
-  # end
-  # definitions
-  # end
 
   def definitions
     Definition.find_by_word(self.id)
@@ -46,7 +36,7 @@ class Word
 
   def delete
     @@songs.delete(self.id)
-  end  
+  end
 
   def self.clear
     @@words = {}

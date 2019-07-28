@@ -1,5 +1,7 @@
+require ('./lib/word')
+
 class Definition
-  attr_accessor :definition, :definitions, :id
+  attr_accessor :definition, :word_id, :id
 
   @@definitions = {}
   @@total_rows = 0
@@ -7,7 +9,7 @@ class Definition
   def initialize(attributes)
     @definition = attributes.fetch(:definition)
     @word_id = attributes.fetch(:word_id)
-    @@total_rows += 1
+    @id = @@total_rows += 1
   end
 
   def save
@@ -20,6 +22,17 @@ class Definition
 
   def self.find(id)
     @@definitions[id]
+  end
+
+  def self.find_by_word(word_id)
+  definitions = []
+  @@definitions.values.each do |definition|
+    binding.pry
+    if definition.word_id == word_id
+      definitions.push(definition)
+    end
+  end
+  definitions
   end
 
   def self.clear

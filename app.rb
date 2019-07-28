@@ -32,13 +32,15 @@ end
 post ('/words/:id') do
   @words = Word.all
   @word = Word.find(params[:id].to_i)
-  @word.definitions.push(params[:definition])
+  definition_input = params[:definition]
+  @definition = Definition.new(:definition => definition_input, :word_id => @word.id)
+  @definition.save()
   erb (:word)
 end
 
 patch('/words/:id/definitions/:definition_id') do
   @word = Word.find(params[:id].to_i())
-  definition = Definition.find(params[:definition_id].to_i())
+  definition =c Definition.find(params[:definition_id].to_i())
   definition.update(params[:name], @word.id)
   erb(:Word)
 end
