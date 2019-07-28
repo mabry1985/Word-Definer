@@ -11,11 +11,12 @@ get ('/') do
 end
 
 post ('/') do
-  word = params[:word]
-  definition = params[:definition]
-  new_word = Word.new({:word => word})
-  new_word.save()
-  new_word.definitions.push(definition)
+  @word = params[:word]
+  definition_input = params[:definition]
+  @word = Word.new({:word => @word})
+  @word.save()
+  @definition = Definition.new(:definition => definition_input, :word_id => @word.id)
+  @definition.save()
   redirect('/')
 end
 
@@ -38,9 +39,32 @@ post ('/words/:id') do
   erb (:word)
 end
 
+post ('/words/:id/edit') do
+  @word = Word.find(params[:id].to_i())
+  erb(:update_word)
+end
+
+patch('/words/:id') do
+  @word = Word.find(params[:id].to_i())
+  @word.update(params[:word])
+  @words = word.all
+  erb(:words)
+end
+
+delete('/words/:id') do
+  @word = Word.find(params[:id].to_i())
+  @word.delete()
+  @words = Word.all
+  erb(:index)
+end
+
+
+
+
+
 patch('/words/:id/definitions/:definition_id') do
   @word = Word.find(params[:id].to_i())
-  definition =c Definition.find(params[:definition_id].to_i())
+  definition = Definition.find(params[:definition_id].to_i())
   definition.update(params[:name], @word.id)
   erb(:Word)
 end

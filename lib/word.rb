@@ -8,7 +8,6 @@ class Word
 
   def initialize(attributes)
     @word = attributes.fetch(:word)
-    @definitions = []
     @id = id || @@total_rows += 1
   end
 
@@ -31,11 +30,11 @@ class Word
   def update(name, album_id)
     self.name = name
     self.album_id = album_id
-    @@songs[self.id] = Song.new(self.name, self.album_id, self.id)
+    @@words[self.id] = Word.new(self.word, self.id)
   end
 
   def delete
-    @@songs.delete(self.id)
+    @@words.delete(self.id)
   end
 
   def self.clear

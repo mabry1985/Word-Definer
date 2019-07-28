@@ -1,5 +1,14 @@
 <h4><%= @word.word %></h4>
 
+<form action="/words/<%= @word.id() %>" method="post">
+  <input name="_method" type="hidden" value="delete">
+
+  <button type="submit">Delete word</button>
+</form>
+
+<form class="" action="/words/<%= @word.id() %>/edit" method="post">
+  <button type="submit" href="/words/<%= @word.id() %>/edit">Edit</button>
+</form>
   <% if @word.definitions.any? %>
   <ul>
     <% @word.definitions.each do |definition| %>
