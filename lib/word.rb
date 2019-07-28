@@ -27,9 +27,9 @@ class Word
     @@words[id]
   end
 
-  def update(name, album_id)
-    self.name = name
-    self.album_id = album_id
+  def update(word, word_id)
+    self.word = word
+    self.id = word_id
     @@words[self.id] = Word.new(self.word, self.id)
   end
 
