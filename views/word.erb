@@ -1,16 +1,14 @@
 <h4><%= @word.word %></h4>
 
-<ul>
-  <% if @word.definitions.length > 0 %>
+  <% if @word.definitions %>
+  <ul>
     <% @word.definitions.each do |definition| %>
-      <li><%= definition %>
-        <form action="/words/<%= @word.id %>" method="delete">
-        <button href="/words/<%= @word.id %>" name="<%= @word.definitions.index(definition) %>">delete</button>
-        </form>
-      </li>
+      <li><a href="/words/<%= @word.id %>/definitions/<%= definition.id %>"><%= definition.definition %></a></li>
+      <% end %>
+  </ul>
     <% end %>
 <% else %>
-  <p>There are no defintions listed for this word yet.</p>
+  <p>There are no definitions listed for this word yet.</p>
 <% end %>
 </ul>
 
