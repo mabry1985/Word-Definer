@@ -1,0 +1,15 @@
+<h4><%= @word.word %></h4>
+
+<ul>
+  <form action="/words/<%= @word.id %>" method="patch">
+  <% if @word.definitions.length > 0 %>
+    <% @word.definitions.each do |definition| %>
+      <li><%= definition %>
+      </li>
+    <% end %>
+<% else %>
+  <p>There are no defintions listed for this word yet.</p>
+<% end %>
+</ul>
+<button href="/words/<%= @word.id %>" name="<%= @word.definitions.index(definition) %>">delete</button>
+</form>

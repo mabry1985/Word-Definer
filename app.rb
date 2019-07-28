@@ -1,6 +1,7 @@
 require('sinatra')
 require('sinatra/reloader')
-require('./lib/word_definer')
+require('./lib/word')
+require('./lib/definitions')
 require('pry')
 also_reload('lib/**/*.rb')
 
@@ -36,7 +37,8 @@ post ('/words/:id') do
 end
 
 delete ('/words/:id') do
-  binding.pry
-  @word.definitions.delete_at(id)
-  erb (:word)
+  params.inspect
+  index = params['splat']
+  @word.definitions.delete_at(index)
+  redirect ('/words/:id')
 end
