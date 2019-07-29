@@ -1,5 +1,6 @@
 require 'rspec'
-require 'word_definer'
+require 'word'
+require 'definition'
 
 describe('#word_definer') do
   before(:each) do

@@ -27,10 +27,8 @@ class Word
     @@words[id]
   end
 
-  def update(word, word_id)
-    self.word = word
-    self.id = word_id
-    @@words[self.id] = Word.new(self.word, self.id)
+  def update(attributes)
+    self.word = attributes.fetch(:word)
   end
 
   def delete
