@@ -30,11 +30,17 @@ get ('/words/:id') do
   erb(:word)
 end
 
+get ('/words/:id/edit') do
+  @word = Word.find(params[:id].to_i())
+  @words = Word.all
+  erb(:update_word)
+end
+
 post ('/words/:id') do
   @word = Word.find(params[:id].to_i())
   @word.update(:word => params[:word])
   @words = Word.all
-  erb(:update_word)
+  erb(:word)
 end
 
 delete('/words/:id') do
