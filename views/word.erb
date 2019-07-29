@@ -6,7 +6,7 @@
   <button type="submit">Delete word</button>
 </form>
 
-<form class="" action="/words/<%= @word.id() %>/edit" method="post">
+<form class="" action="/words/<%= @word.id() %>" method="post">
   <button type="submit" href="/words/<%= @word.id() %>/edit">Edit Word</button>
 </form>
   <% if @word.definitions.any? %>

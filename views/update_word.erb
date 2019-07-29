@@ -1,10 +1,10 @@
 <h1>Update <%= @word.word %></h1>
 
-<form action="/words/<%= @word.id %>/edit" method="post">
+<form action="/words/<%= @word.id %>" method="post">
   <input word="_method" type="hidden" value="patch">
 
   <label for="word">Edit word</label>
-  <input name="word" type="text">
+  <input name="word" type="text" value="<%= @word.word %>">
 
   <button type="submit">Update</button>
 </form>
