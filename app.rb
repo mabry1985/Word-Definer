@@ -30,6 +30,14 @@ get ('/words/:id') do
   erb(:word)
 end
 
+post '/words/:id' do
+  @words = Word.all()
+  @word = Word.find(params[:id].to_i())
+  @definition = Definition.new(:definition => params[:definition], :word_id => @word.id)
+  @definition.save()
+  erb(:word)
+end
+
 get ('/words/:id/edit') do
   @word = Word.find(params[:id].to_i())
   @words = Word.all()
