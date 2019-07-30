@@ -15,6 +15,9 @@ _A place for kids to place words they want to know the definition to and users c
 * _run "ruby app.rb_
 * _follow prompts_
 
+## Link
+* _https://frozen-taiga-23857.herokuapp.com_
+
 ## Known Bugs
 
 _No known bugs._
