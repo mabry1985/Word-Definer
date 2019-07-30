@@ -1,14 +1,7 @@
 <h4><%= @word.word %></h4>
+<a href="/words/<%= @word.id %>/edit">Edit Word</a>
 
-<form action="/words/<%= @word.id() %>" method="post">
-  <input name="_method" type="hidden" value="delete">
-
-  <button type="submit">Delete word</button>
-</form>
-
-  <a href="/words/<%= @word.id %>/edit">Edit Word</a>
-
-  <% if @word.definitions.any? %>
+<% if @word.definitions.any? %>
   <ul>
     <% @word.definitions.each do |definition| %>
       <li><a href="/words/<%= @word.id %>/definitions/<%= definition.id %>"><%= definition.definition %></a></li>

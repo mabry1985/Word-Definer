@@ -7,46 +7,47 @@ also_reload('lib/**/*.rb')
 
 get ('/') do
   @words = Word.all
+    @word = Word.find(params[:id].to_i())
   erb(:index)
 end
 
 post ('/word') do
-  @word = params[:word]
-  definition_input = params[:definition]
-  @word = Word.new(:word => @word)
+  @word = Word.new(:word => params[:word])
   @word.save()
-  @definition = Definition.new(:definition => definition_input, :word_id => @word.id)
+  @definition = Definition.new(:definition => params[:definition], :word_id => @word.id)
   @definition.save()
   erb (:word)
 end
 
 get ('/words/new') do
+  @word = Word.find(params[:id].to_i())
   erb(:new_word)
 end
 
 get ('/words/:id') do
-  @words = Word.all
-  @word = Word.find(params[:id].to_i)
+  @words = Word.all()
+  @word = Word.find(params[:id].to_i())
   erb(:word)
 end
 
 get ('/words/:id/edit') do
   @word = Word.find(params[:id].to_i())
-  @words = Word.all
+  @words = Word.all()
   erb(:update_word)
 end
 
 post ('/words/:id') do
   @word = Word.find(params[:id].to_i())
   @word.update(:word => params[:word])
-  @words = Word.all
+  @words = Word.all()
   erb(:word)
 end
 
 delete('/words/:id') do
   @word = Word.find(params[:id].to_i())
   @word.delete()
-  @words = Word.all
+  @words = Word.all()
+  redirect to('/')
   erb(:index)
 end
 
