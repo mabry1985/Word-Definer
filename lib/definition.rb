@@ -39,10 +39,8 @@ class Definition
     @@total_rows = 0
   end
 
-  def update(definition, word_id)
-    self.definition = definition
-    self.word_id = word_id
-    @@definitions[self.id] = Song.new(self.definition, self.word_id, self.id)
+  def update(attributes)
+    self.definition = attributes.fetch(:definition)
   end
 
   def delete
