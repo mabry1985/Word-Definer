@@ -14,8 +14,6 @@ end
 post ('/word') do
   @word = Word.new(:word => params[:word])
   @word.save()
-  @definition = Definition.new(:definition => params[:definition], :word_id => @word.id)
-  @definition.save()
   erb (:word)
 end
 
