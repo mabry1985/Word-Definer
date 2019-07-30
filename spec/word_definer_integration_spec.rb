@@ -8,8 +8,8 @@ before(:each) do
   Word.clear()
 end
 
-describe('create a word path', {:type => :feature}) do
-  it('creates a word and then goes to the home page') do
+describe('create and edit word', {:type => :feature}) do
+  it('creates a word') do
     visit('/')
     click_on('Add a new word!')
     fill_in('word', :with => 'Submarine')
@@ -17,15 +17,13 @@ describe('create a word path', {:type => :feature}) do
     expect(page).to have_content('Submarine')
   end
 end
-#
-# describe('create a word path and view definition', {:type => :feature}) do
-#   it('creates a word and definition and then goes to the word page') do
-#     visit("/")
-#     click_on('Add a new word!')
-#     fill_in('word', :with => 'Ranch')
-#     fill_in('definition', :with => 'seasoned mayo')
-#     click_on('Add word')
-#     click_on('Ranch')
-#     expect(page).to have_content('seasoned mayo')
-#   end
-# end
+
+describe('create and edit definition', {:type => :feature}) do
+  it('creates a word and definition') do
+    @word = Word.new(:word => 'Ranch')
+    visit("/words/1")
+    fill_in('definition', :with => 'seasoned mayo')
+    click_on('Add definition')
+    expect(page).to have_content('seasoned mayo')
+  end
+end
