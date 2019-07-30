@@ -36,10 +36,13 @@ get ('/words/:id/edit') do
   erb(:update_word)
 end
 
-post ('/words/:id') do
+# can't get patch to work
+post ('/words/:id/edit') do
   @word = Word.find(params[:id].to_i())
   @word.update(:word => params[:word])
   @words = Word.all()
+  # can't get redirect to work, won't grab word.id
+  # redirect to('words/:id')
   erb(:word)
 end
 
@@ -58,6 +61,7 @@ get('/words/:id/definitions/:definition_id') do
   erb(:update_definition)
 end
 
+# can't get patch to work
 post('/words/:id/definitions/:definition_id') do
   @word = Word.find(params[:id].to_i())
   @definition = Definition.find(params[:definition_id].to_i())
@@ -68,8 +72,9 @@ end
 delete('/words/:id/definitions/:definition_id') do
   definition = Definition.find(params[:definition_id].to_i())
   definition.delete
-  @words = Word.all()
   @word = Word.find(params[:id].to_i())
+  @words = Word.all()
+  # can't get redirect to work, won't grab word.id
+  # redirect to ('/words/:id')
   erb(:Word)
-  redirect to ('/words/:id')
 end
